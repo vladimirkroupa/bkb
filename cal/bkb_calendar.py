@@ -2,14 +2,20 @@ from datetime import timedelta
 from calendar_api import events_list, events_insert
 
 
-def create_event(calendar_id, start_time, end_time, summary, description=None, loanee_email=None, loanee_name=None, location=None):
+def create_event(calendar_id, start_time, end_time, summary, description=None, loanee_email=None, loanee_name=None,
+                 location=None):
+    existing_events = has_events(calendar_id, start_time, end_time)
+    if len(existing_events) > 0:
+        # FIXME log?
+        return None
+
     event = {
         'summary': summary,
         'start': {
-            'dateTime': start_time
+            'dateTime': start_time.isoformat()
         },
         'end': {
-            'dateTime': end_time
+            'dateTime': end_time.isoformat()
         }
     }
     if description is not None:

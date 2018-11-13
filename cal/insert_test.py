@@ -9,8 +9,11 @@ def main():
     start_time = datetime(2018, 11, 14, 7, 0, tzinfo=prg_tz)
     end_time = datetime(2018, 11, 14, 8, 0, tzinfo=prg_tz)
     summary = 'Fegit of the year'
-    event = create_event(CALENDAR_ID, str(start_time.isoformat()), str(end_time.isoformat()), summary)
-    print('Event created: %s' % (event.get('htmlLink')))
+    event = create_event(CALENDAR_ID, start_time, end_time, summary)
+    if event is not None:
+        print('Event created: %s' % (event.get('htmlLink')))
+    else:
+        print('Could not create event')
 
 
 if __name__ == '__main__':
