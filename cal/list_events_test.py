@@ -1,17 +1,10 @@
-from datetime import datetime, timezone, timedelta
-from bkb_calendar import has_events
+from bkb_calendar import list_all_future_loans
 
 CALENDAR_ID = 'primary'
 
 
 def main():
-    # logging.basicConfig(level=logging.INFO)
-
-    # FIXME tz not hardwired, CET/CEST
-    prg_tz = timezone(timedelta(hours=1))
-    time_min_prg = datetime(2018, 11, 12, 7, 0, tzinfo=prg_tz)
-    time_max_prg = datetime(2018, 11, 12, 18, 0, tzinfo=prg_tz)
-    events = has_events(CALENDAR_ID, time_min_prg, time_max_prg)
+    events = list_all_future_loans(CALENDAR_ID, '123456')
 
     if not events:
         print('No upcoming events found.')

@@ -25,13 +25,15 @@ def build_calendar_service(cred_storage):
 
 def events_list(time_min, time_max, calendar_id):
     service = build_calendar_service(store)
-    time_min_iso = time_min.isoformat()
-    time_max_iso = time_max.isoformat()
-    log.warn('timeMin utc: %s', time_min_iso)
-    log.warn('timeMax utc: %s', time_max_iso)
+    if time_min is not None:
+        time_min = time_min.isoformat()
+        log.warn('timeMin: %s', time_min)
+    if time_max is not None:
+        time_max = time_max.isoformat()
+        log.warn('timeMax: %s', time_max)
     events_result = service.events().list(calendarId=calendar_id,
-                                          timeMax=time_max_iso,
-                                          timeMin=time_min_iso,
+                                          timeMax=time_max,
+                                          timeMin=time_min,
                                           maxResults=10,
                                           singleEvents=True,
                                           orderBy='startTime').execute()
