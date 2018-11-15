@@ -42,8 +42,12 @@ def events_list(time_min, time_max, calendar_id):
 
 
 def events_insert(event, calendar_id):
+    # TODO event as a namedtuple
     service = build_calendar_service(store)
     event = service.events().insert(calendarId=calendar_id, body=event).execute()
     return event
 
-# TODO event as a namedtuple
+
+def events_delete(event_id, calendar_id):
+    service = build_calendar_service(store)
+    service.events().delete(calendarId=calendar_id, eventId=event_id).execute()

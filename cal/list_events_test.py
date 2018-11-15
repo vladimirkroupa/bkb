@@ -1,10 +1,10 @@
-from bkb_calendar import list_all_future_loans
+from bkb_calendar import list_all_future_loans, list_future_loans
 
 CALENDAR_ID = 'primary'
 
 
 def main():
-    events = list_all_future_loans(CALENDAR_ID, '123456')
+    events = list_future_loans(CALENDAR_ID, 'goobyson')
 
     if not events:
         print('No upcoming events found.')
