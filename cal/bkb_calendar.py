@@ -81,3 +81,7 @@ def cancel_loan(calendar_id, user_id, event_id):
         raise Exception(f'Loan [{event_id}] does not exist or does not belong to user {user_id}')
 
     events_delete(loan_to_delete[0]['id'], calendar_id)
+
+
+def cancel_any_loan(calendar_id, event_id):
+    events_delete(event_id, calendar_id)
