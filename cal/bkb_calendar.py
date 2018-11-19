@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from calendar_api import events_list, events_insert, events_delete
+from cal.calendar_api import events_list, events_insert, events_delete
 from pytz import timezone
 
 LOCAL_TZ = timezone('Europe/Prague')

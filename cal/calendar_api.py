@@ -11,13 +11,13 @@ SCOPES = 'https://www.googleapis.com/auth/calendar.events'
 # The file token.json stores the user's access and refresh tokens, and is
 # created automatically when the authorization flow completes for the first
 # time.
-store = file.Storage('token.json')
+store = file.Storage('cal/token.json')
 
 
 def build_calendar_service(cred_storage):
     creds = cred_storage.get()
     if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
+        flow = client.flow_from_clientsecrets('cal/credentials.json', SCOPES)
         creds = tools.run_flow(flow, cred_storage)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
     return service

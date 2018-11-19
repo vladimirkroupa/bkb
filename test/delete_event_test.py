@@ -1,4 +1,4 @@
-from bkb_calendar import cancel_loan
+from cal.bkb_calendar import cancel_loan
 
 CALENDAR_ID = 'primary'
 

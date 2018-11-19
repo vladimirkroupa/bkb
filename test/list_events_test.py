@@ -1,4 +1,4 @@
-from bkb_calendar import list_all_future_loans, list_future_loans
+from cal.bkb_calendar import  list_future_loans
 
 CALENDAR_ID = 'primary'
 
